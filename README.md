@@ -1,9 +1,9 @@
-NanoGPT – Transformer Language Model from Scratch
-
+**NanoGPT – Transformer Language Model from Scratch
+**
 A minimal, fully working decoder-only Transformer (GPT-style) language model implemented from first principles using PyTorch.
 This project is built for learning and clarity, not scale — focusing on how GPT models work internally.
 
-Features
+**Features**
 
 Character-level language modeling
 
@@ -21,7 +21,7 @@ Autoregressive text generation
 
 Training & evaluation loops from scratch
 
- Model Architecture
+ **Model Architecture**
 
 Type: Decoder-only Transformer (GPT-style)
 
