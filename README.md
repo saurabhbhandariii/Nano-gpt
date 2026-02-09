@@ -1,137 +1,48 @@
-NanoGPT – Transformer Language Model from Scratch
+# NanoGPT – Transformer Language Model from Scratch
 
-A minimal, fully working decoder-only Transformer (GPT-style) language model implemented from first principles using PyTorch.
-This project is built for learning and clarity, not scale — focusing on how GPT models work internally.
+A minimal implementation of a **decoder-only Transformer (GPT-style)** language model built **from first principles** using PyTorch.  
+This project focuses on understanding the **core internals of GPT models** rather than scale or production optimizations.
 
-🚀 Features
+---
 
-Character-level language modeling
+## Overview
 
-Token & positional embeddings
+This project implements a small-scale GPT model trained using **autoregressive next-token prediction**.  
+All major Transformer components are implemented manually without relying on high-level LLM frameworks.
 
-Causal self-attention with masking
+The model is trained on a character-level text dataset (Tiny Shakespeare) and can generate coherent text sequences.
 
-Multi-head attention
+---
 
-Feed-forward Transformer blocks
+## Model Architecture
 
-Residual connections & LayerNorm
+- Decoder-only Transformer (GPT-style)
+- Token Embeddings + Positional Embeddings
+- Masked (causal) Self-Attention
+- Multi-Head Attention
+- Feed-Forward Networks (MLP)
+- Residual Connections
+- Layer Normalization
+- Cross-Entropy Loss for next-token prediction
 
-Autoregressive text generation
+---
 
-Training & evaluation loops from scratch
+## Hyperparameters
 
-🧠 Model Architecture
+- Embedding Dimension: 64  
+- Number of Heads: 4  
+- Number of Transformer Layers: 4  
+- Context Length (Block Size): 32  
+- Optimizer: AdamW  
+- Learning Rate: 1e-3  
 
-Type: Decoder-only Transformer (GPT-style)
+---
 
-Attention: Masked self-attention (causal)
+## Dataset
 
-Embedding Dim: 64
+The model is trained on **Tiny Shakespeare**, a small character-level dataset.
 
-Heads: 4
+You can download it using:
 
-Layers: 4
-
-Context Length: 32 tokens
-
-Training Objective: Next-token prediction (cross-entropy)
-
-📁 Project Structure
-.
-├── input.txt          # Training text (e.g. Tiny Shakespeare)
-├── model.py           # NanoGPT implementation
-├── train.py           # Training loop & evaluation
-├── README.md
-
-
-Note: The project can also be run as a single script if preferred.
-
-⚙️ Setup & Installation
-1. Clone the repository
-git clone https://github.com/your-username/nanogpt-from-scratch.git
-cd nanogpt-from-scratch
-
-2. Create virtual environment (optional but recommended)
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-3. Install dependencies
-pip install torch
-
-📊 Dataset
-
-This project uses Tiny Shakespeare, a small character-level text dataset.
-
+```bash
 wget https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
-
-
-You can replace input.txt with any plain-text dataset.
-
-🏋️ Training the Model
-
-Run:
-
-python train.py
-
-
-During training, the script:
-
-Samples mini-batches
-
-Computes cross-entropy loss
-
-Evaluates train/validation loss periodically
-
-Updates parameters using AdamW
-
-Example output:
-
-step 0: train loss 4.23, val loss 4.21
-step 1000: train loss 2.45, val loss 2.50
-
-✍️ Text Generation
-
-After training, the model generates text autoregressively:
-
-ROMEO:
-What shall I do? O gentle night...
-
-
-Generation uses probabilistic sampling from the model’s output distribution.
-
-🧪 Key Learning Outcomes
-
-Deep understanding of Transformer internals
-
-How causal masking enables autoregressive generation
-
-Why attention scaling stabilizes training
-
-How context length impacts memory & compute
-
-Difference between toy GPTs and large-scale production models
-
-🚧 Limitations
-
-Character-level tokenization (no BPE / SentencePiece)
-
-No KV-cache or FlashAttention
-
-Single-GPU / CPU training
-
-Not intended for large-scale pretraining
-
-This is a learning-focused NanoGPT, not a production LLM.
-
-🔮 Future Improvements
-
-Add subword tokenization (BPE)
-
-Implement KV-cache for faster generation
-
-Mixed-precision training (FP16)
-
-Larger context window
-
-Train on larger datasets
